@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 /**
+ * 订单管理
  * @author gms
  * @Version: 1.0
  * @date 2020/4/19 20:16
@@ -39,6 +40,15 @@ public class OrderController {
         Orders orders = iOrderService.findById(id);
         mv.addObject("orders",orders);
         mv.setViewName("orders-show");
+        return mv;
+    }
+
+    @RequestMapping("/findByIdForEdit.do")
+    public ModelAndView findByIdForEdit(@RequestParam(name = "id",required = true)String id){
+        ModelAndView mv =new ModelAndView();
+        Orders orders = iOrderService.findById(id);
+        mv.addObject("orders",orders);
+        mv.setViewName("orders-edit");
         return mv;
     }
 }

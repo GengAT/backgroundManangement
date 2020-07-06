@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
+ * 日志
  * @author gms
  * @Version: 1.0
  * @date 2020/5/8 16:37

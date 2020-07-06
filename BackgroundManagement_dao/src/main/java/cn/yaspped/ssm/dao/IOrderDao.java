@@ -44,4 +44,19 @@ public interface IOrderDao {
 
     })
     Orders findById(String orderId);
+
+    @Select("select * from orders where productId =#{id}")
+    @Results({
+            @Result(id = true,property = "id",column = "id"),
+            @Result(property = "orderNum",column = "orderNum"),
+            @Result(property = "orderTime",column = "orderTime"),
+            @Result(property = "orderTimeStr",column = "orderTimeStr"),
+            @Result(property = "orderStatus",column = "orderStatus"),
+            @Result(property = "peopleCount",column = "peopleCount"),
+            @Result(property = "payType",column = "payType"),
+            @Result(property = "payTypeStr",column = "payTypeStr"),
+            @Result(property = "orderDesc",column = "orderDesc"),
+            @Result(property = "product",column = "productId",javaType = Product.class,one = @One(select = "cn.yaspped.ssm.dao.IProductDao.findById")),
+    })
+    List<Orders> findOrderById(String id);
 }

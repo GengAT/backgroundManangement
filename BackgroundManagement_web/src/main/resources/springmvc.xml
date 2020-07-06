@@ -31,6 +31,9 @@
     <mvc:resources location="/js/" mapping="/js/**" />
     <mvc:resources location="/plugins/" mapping="/plugins/**" />
 
+    <!--此方法也可以设置静态资源不过滤-->
+<!--    <mvc:default-servlet-handler/>-->
+
     <!--开启对SpringMVC注解的支持-->
     <mvc:annotation-driven/>
 

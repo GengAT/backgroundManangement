@@ -1,6 +1,7 @@
 package cn.yaspeed.ssm.controller;
 
 import cn.yaspped.ssm.service.IProductService;
+import cn.yasspeed.ssm.domain.Orders;
 import cn.yasspeed.ssm.domain.Product;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,4 +37,31 @@ public class ProductController {
         productService.save(product);
         return "redirect:findAll.do";
     }
+
+    @RequestMapping("/findById.do")
+    public ModelAndView findById(@RequestParam(name = "id",required = true)String id){
+        ModelAndView mv =new ModelAndView();
+        Product product = productService.findById(id);
+        mv.addObject("product",product);
+        mv.setViewName("product-edit");
+        return mv;
+    }
+
+    @RequestMapping("/edit.do")
+    public String edit(Product product){
+        ModelAndView mv =new ModelAndView();
+        productService.edit(product);
+        return "redirect:findAll.do";
+    }
+
+    @RequestMapping("/findOrderById.do")
+    public ModelAndView findOrderById(String id){
+        ModelAndView mv =new ModelAndView();
+        List<Orders> orders  = productService.findOrderById(id);
+        mv.addObject("orders",orders);
+        mv.setViewName("product_orders-show");
+        return mv;
+    }
+
+
 }

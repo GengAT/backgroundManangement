@@ -1,8 +1,8 @@
 package cn.yaspped.ssm.dao;
 
 import cn.yasspeed.ssm.domain.Product;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,4 +30,14 @@ public interface IProductDao {
      */
     @Select("select * from product where id =#{id}")
     public Product findById(String id);
+
+    /**
+     * 根据id修改产品信息
+     * @param product
+     * @return
+     */
+    //productNum,productName,cityName,departureTime,productPrice,productDesc,productStatus
+    @Update("update product set productNum=#{productNum},productName=#{productName},cityName=#{cityName},departureTime=#{departureTime},productPrice=#{productPrice},productDesc=#{productDesc},productStatus=#{productStatus} where id=#{id} ")
+   public void edit(Product product);
+
 }

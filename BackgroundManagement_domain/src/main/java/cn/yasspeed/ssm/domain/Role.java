@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
+ * 角色
  * @author gms
  * @Version: 1.0
  * @date 2020/4/24 15:07
